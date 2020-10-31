@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path'),
 bodyParser = require('body-parser'),
 http = require('http'),
+enums = require('./lib/common/enum'),
 RouteHandler = require('./lib/routes');
 let app = null, routes  = null;
 
@@ -22,6 +23,7 @@ class AppLoader {
         })
         let server = http.createServer(app)
         server.listen('8000');
+        console.log(enums.message.Welcome)
     }
 }
 
