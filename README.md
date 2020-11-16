@@ -8,6 +8,10 @@ the command to start the server "node server"
 please find the following sample  POSTman Requests 
 
 
+
+PLEASE USE "node server.js withstub" COMMAND SO THAT ADJACENCY LIST WILL BE AUTOMATICALLY STUBBED
+
+
 * Create Device
 
 curl -X POST \
@@ -18,6 +22,17 @@ curl -X POST \
 content-type : application/json
 
 {"type" : "COMPUTER", "name" : "A1"}'
+
+
+curl -X POST \
+  http://localhost:8000/ajiranet/process \
+  -H 'Postman-Token: c7d314eb-db42-4909-a777-ca084eb40e53' \
+  -H 'cache-control: no-cache' \
+  -d 'CREATE /devices
+content-type : application/json
+
+
+{"type" : "BRIDGE", "name" : "A3", "bridgeOp" : "UPPER"}'
 
 
 * Create Connection
@@ -52,3 +67,14 @@ curl -X POST \
 content-type : application/json
 
 {"value": 2}'
+
+  * Send Message
+
+  curl -X POST \
+  http://localhost:8000/ajiranet/process \
+  -H 'Postman-Token: f797d909-813c-4de0-9ca0-cc1f49af8bd0' \
+  -H 'cache-control: no-cache' \
+  -d 'SEND /message
+content-type : application/json
+
+{"from" : "A1", "to" : "A4", "message":"Hello"}'
